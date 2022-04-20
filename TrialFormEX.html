@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        a {
+
+            color: palegoldenrod;
+            
+           } 
+    </style>
+</head>
+
+
+<body bgcolor="#7700ff">
+
+    <form method="POST" name="google-sheet">
+        <div>
+            <p style="text-align:center;">
+          <label for="name"><a>Name</a></label>
+          <input type="text" id="fname" name="Name" 
+                 placeholder="Username"
+                 ></p>
+        
+                 <hr>
+                 <p style="text-align:center;">
+        <label for="email"><a>Email</a></label>
+          <input type="text" id="1name" name="Email" 
+                 placeholder="Email"
+                 >
+                </p>
+                 <hr>
+                 <p style="text-align:center;">
+        <label for="mobile"><a>Mobile</a></label>
+          <input type="text" id="1name" name="Mobile" required size="10" >
+        
+          <hr>
+          <p style="text-align:center;"><a>
+          <input type ="submit" value="Submit" name="submit"></a>
+            </p>
+        </div>
+      </form>
+
+
+        <script>   
+        
+            const scriptURL =
+            "https://script.google.com/macros/s/AKfycbwhOuf1zQNDPk8-YeJkuQg6nK_yH98B_4ohwjX18-yNSw7OA3fE6Gbl6e3MU9Om-Qm4uQ/exec"
+            
+            const form = document.forms['google-sheet']
+
+            form.addEventListener('submit' , e => {
+                e.preventDefault ()
+                fetch(scriptURL, { method: 'POST' , body : new FormData(form)})
+                .then(response => alert("Response Successful"))
+                .catch(error => console.error('Error', error.message))
+            })
+
+        </script>   
+    
+</body>
+</html>
